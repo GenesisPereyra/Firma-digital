@@ -1,0 +1,230 @@
+\documentclass{amsart}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{mathrsfs}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{subfigure}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% Para tablas:
+\usepackage{booktabs}
+\usepackage{multirow}
+
+% Para incluir números de línea que faciliten la revisión
+\usepackage{lineno}
+\linenumbers
+
+
+% Para hipervínculos:
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=magenta,
+    filecolor=magenta,      
+    urlcolor=black,
+    pdftitle={Reforestation Logistic Transport Optimization},
+    pdfpagemode=FullScreen,
+    citecolor = blue
+    }
+\urlstyle{same}
+
+%Para referencias
+\usepackage[spanish]{babel}
+\usepackage[babel]{csquotes}
+\usepackage[backend=biber, style=authoryear]{biblatex}
+\DeclareLanguageMapping{spanish}{spanish-apa}
+\addbibresource{referencias.bib}
+
+\newenvironment{Figura}
+{\par\medskip\noindent\minipage{\linewidth}}
+{\endminipage\par\medskip}
+
+\begin{document}
+
+% ------------------------------- PORTADA -----------------------------
+\begin{center}
+    %{\bfseries\LARGE Instituto Tecnológico de Monterrey\par}
+    %\vspace{0.5cm}
+    %{\scshape\Large Escuela de Ingeniería y Ciencias\par}
+    \vspace{0.5cm}
+    %{\scshape\Huge Digital Signature\par}
+    {\scshape\Huge Firma Digital\par}
+    \vspace{0.5cm}
+
+    \begin{tabular}{cc}
+        \begin{tabular}[c]{@{}c@{}}Ricardo Kaleb Flores Alfonso\\ A01198716\end{tabular} &
+        \begin{tabular}[c]{@{}c@{}}José de Jesús Ramírez Mendieta\\ A00835680\end{tabular} \\
+        \begin{tabular}[c]{@{}c@{}}Ana Karen Márquez\\ A01028413\end{tabular} &
+        \begin{tabular}[c]{@{}c@{}}Génesis Pereyra Camacho\\ A01734276\end{tabular} \\
+        \begin{tabular}[c]{@{}c@{}}Natalia Olvera Ortiz\\ A01285367\end{tabular} &
+    \end{tabular}
+    
+    \vspace{1cm}
+
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.5\linewidth]{Sources/tecnologico-de-monterrey-blue.png}
+        \label{fig:LogoTec}
+    \end{figure}
+
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.5\linewidth]{Sources/Logo-Monarca.png}
+        \label{fig:LogoCasaMonarca}
+    \end{figure}
+
+    \vspace{1cm}
+
+    \begin{tabular}{ccc}
+        Luis Miguel Méndez Díaz & Daniel Otero Fadul & Raúl Gómez Muñoz
+    \end{tabular}
+    
+    \vspace{0.3cm}
+    {\small \today}
+    \vspace{0.5cm}
+    
+    \rule{16.5cm}{0.1pt}
+\end{center}
+%--------------INDICE---------------
+
+% -----------------------------Resumen---------------------------------
+\section{Abstract}
+The present work aims to improve the security of the documents emited by an organization which helps inmigrants in Mexico. By developing a digital signature system that identifies each document as unique and can't be manipulated without knowledge from all the responsibles. Given that the forgery of those documents can compromise the opportunities and security of the inmigrants, while reducing the trust between the organization and inmigrants. This system has been developed considering the resource limits that this type of organization have, also the compatibility with Azure components was taken into account. 
+\section{Resumen}
+Este trabajo busca mejorar la seguridad de los documentos emitidos por una organización que brinda apoyo a migrantes en Mexico. A traves del desarrollo de un sistema de firma digital que identifique cada documento como unico y no pueda ser manipulado sin el conocimiento de los responsables. Esta necesidad surge debido a que la falsificación de dichos documentos pueden comprometer las oportunidades y seguridad de los migrantes asi como reducir la confianza de estos mismos hacia la organización. Para la herramienta desarrollada fue importante tomar en cuenta el limite de recursos que suelen tener las organizaciones, asi como la compatibilidad con los componentes de Azure.
+
+    
+
+
+% -----------------------------Introduccion---------------------------------
+
+    \section{Introducción}
+    %Brief background, literature review, research contribution, objective
+        En los ultimos años, la seguridad de la información se ha convertido en un pilar fundamental para el mundo como lo conocemos. Desde mensajes encriptados por el internet, hasta transferencias de dinero de manera segura e instantanea desde el telefono. Esto ha generado un desarrollo especializado en la ciberseguridad que permite autenticar de manera rapida a los usuarios. La criptografia se vuelve esencial para garantizar dicha seguridad en los sistemas, la cual proporciona confidencialidad e integridad en los intercambios de información.
+        Estos dos puntos se vuelve relevantes en el contexto de la migración, donde las organizaciones emiten documentos clave, como certificados de identidad, tramites internos y cartas de reconocimiento, que deben de ser protegidos contra falsificaciones y fraudes. Debido a esto se desarolla un mecanismo de firma digital que garatice la autenticidad de los documentos, apoya a los inmigrantes pues les permite asegurar la validez de dichos 
+
+        
+
+
+
+% --------------------------- Marco Teorico ---------------------------------
+
+\section{Marco Referencial}
+    \subsection{Marco Teórico}
+    
+    A lo largo de la vida, el humano ha tenido necesidad de ocultar mensajes y guardar secretos. Sin embargo, en los últimos años esta necesidad se ha visto urgente especialmente en el ambito tecnólogico debido a la gran digitalización que estamos teniendo. "la criptografía tiene como objetivo permitir que dos personas puedan intercambiarse información de forma confidencial y segura mediante un canal inseguro" \parencite{Hernandez}. Entonces, a través de métodos como la transposición, la sustitución o el cifrado, se logra transformar el texto original en un texto oculto. Actualmente, la criptografía se utiliza para más que solo ocultar mensajes, podemos ver sus aplicaciones en cifrados de datos y en firmas electrónicas \parencite{Hernandez}. 
+    Uno de los sistemas utilizados es el esquema híbrido, el cual a través de criptosistemas asimértricos y simétricos, envía mensajes cifrados entre dos usuarios con una clave cifrada pública. Además, existen las funciones de resumen (hash). Estas funciones criptográficas permiten comprobar la integridad de los datos, más allá de cifrar un mensaje. Además, las funciones de resumen convierten los mensajes a un valor con una longitud fija, conocido como resumen \parencite{Hernandez}.
+    Las llaves digitales se crearon con el propósito de evitar suplantación de identidad. Por lo tanto, estas llaves garantizan la integridad y la autoría de un mensaje cifrado utilizando un criptosistema asimértrico. El proceso de generar una llave digital requiere del documento a firmar, una función resumen, la clave privada del firmante y una clave pública. Primero, se calcula el resumen del mensaje, se cifra con la clave privada del firmante y posteriormente puede ser verificada por otro usuario. Un documento puede ser firmado por más de un usuario y las firmas digitales se generan cuando el documento sufre una modificación. Para verificar la firma digital, se necesita conocer el mensaje, la firma y la clave pública del firmante. Si la firma es válida, entonces se comprueba que el mensaje es íntegro y auténtico. Dentro de las llaves digitales más comúnes se realizan a través de algoritmos RSA. Otros métodos para la generación de llaves son ECDSA (Elliptic Curve Digital Signature Algorithm) y el SHA-256 \parencite{Cryptography}.
+    El algotirmo RSA (Rivest-Shamir-Adleman) utiliza una clave pública para cifrar mensajes y crear firmas digitales. Este algotirmo se basa en la dificultad de factorizar grandes números primos. Como parte de su proceso, RSA genera una clave pública para cifrar mensajes y verificar firmas, además de una clave privada para descifrar mensajes y crear firmas. Un mensaje firmado puede ser verificado por cualquier persona que tenga la clave pública. Por otro lado, existe el algoritmo SHA-256 que a partir de datos produce un hash de 256 bits (32 bytes). Por último, existe el ECDSA, una variante del DSA que utiliza criptografía de curvas elípticas. Este algoritmo es parecido al RSA, sin embargo, utiliza claves mucho más cortas, haciendolo eficiente en rendimiento y uso de recursos \parencite{Hernandez}.
+    Los protocolos criptográficos son reglas y procedimientos para desarrollar operaciones criptográficas, asegurando la comunicación en una red, autenticación, confidencialidad, integridad y no repudio. Estos son algunos de los principales protocolos criptográficos:
+        •	X.509: es un estándar de la Unión Internacional de Telecomunicaciones (UIT-T) que define el formato de los certificados de clave pública. Cada certificado tiene una clave pública y es emitido por una autoridad de certificación (CA). Estos certificados son fundamentales para la infraestructura de clave pública (PKI), la cual busca brindar una navegación segura por internet y firmas digitales para autenticación.
+        •	PKCS7: define la sintaxis para los mensajes criptográficos, especifica el formato de datos que puede incluir firmas digitales y contenido cifrado. Este estándar es principalmente utilizado en correos electrónicos. Además, es empleado en la distribución de certificados y listas de revocación de certificados (CRLs) dentro de la PKI.
+        •	eIDAS: El Reglamento eIDAS (Electronic Identification, Authentication, and Trust Services) es una normativa de la Unión Europea que regula la identificación electrónica para transacciones electrónicas. Además, establece requisitos para la validación de firmas electrónicas avanzadas.
+        •	FIPS 140-2: La norma Federal Information Processing Standard (FIPS) 140-2 es una regulación del gobierno de los Estados Unidos que establece los requisitos de seguridad para módulos criptográficos. Principalmente, asegura los módulos criptográficos en dispositivos de hardware de seguridad y programas de software.
+        \parencite{cryptography}
+        
+        
+    Actualmente, en México existen leyes que protegen a los usuarios en su navegación por internet, así como el tratamiento de dato personales. Estas son algunas de las leyes y regulaciones en México relacionadas a la ciberseguridad: Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), Código Penal Federal (enfocado en delitos cibernéticos), la Estrategia Nacional de Ciberseguridad (uniendo fuerzas de gobierno, sector privado y la sociedad civil para mejorar la resiliencia ante ciberataques) y la Iniciativa de Ley Federal de Ciberseguridad \parencite{LeyCiber}. Por otro lado, las firmas digitales están reguladas por diversas leyes y normativas que garantizan su validez y seguridad. La Ley de Firma Electrónica Avanzada establece los criterios para una firma digital válida, al asegurar la autenticidad, integridad y no repudio de los documentos firmados digitalmente. Asimismo, el Código de Comercio y el Código Civil reconocen que las firmas digitales son equivalentes a firmas manuscritas \parencite{Contratos}. Por otro lado, La Ley Federal de Protección de Datos Personales en Posesión de los Particulares establece los principios  en el tratamiento de datos personales. Desde una perspectiva ética, las firmas digitales deben garantizar la privacidad y la protección de los datos personales de los usuarios \parencite{Hacienda}. 
+
+    En el contexto de Python, existen varias librerías que apoyan la creación de algortimos criptográficos para la protección de datos. Una de estas librerías es cryptography, la cual es útil para la tanto para encriptaciones de alto nivel como interfaces de un nivel más bajo. Esta librería permite la cifrados simétricos, resúmen de mensajes y funciones de derivación de claves. Cryptography se divide en 2 niveles: fácil y primitivos criptográficos. El primer nivel es muy fácil de manejar y no requieren una configuración extensa. En cambio, el segundo nivel suele contener criptográficos peligrosos y que requieren de un mayor conocimiento de criptografía para la toma de decisiones \parencite{Cryptography}.
+	Por otro lado, también existe la librería PyCryptodome, la cual es eficaz en en algoritmos y funciones criptográficas. Dentro de esta librería podemos encontrar operaciones como encriptación, decriptación, hashing y la verificación de firmas. Para nuestro proyecto, esta librería es de gran útilidad ya que brinda firmas digitales y las verifica a través de algoritmos RSA y DSA \parencite{Geeks}. De este modo, se cuida la autentidad e integridad de los mensajes, o en nuestro caso, de los documentos. 
+	
+    \subsection{Marco Contextual}
+    El panorama mundial de la migración es complejo, con los crecientes conflictos geopolíticos y las recientes acciones tomadas por el gobierno de los Estados Unidos de América. El flujo migratorio en México se ha convertido en un tema social que requiere soluciones en materia de seguridad, protección de derechos y acceso a recursos básicos. La OIM de la ONU \parencite{OIM-Mexico} comenta que se vuelve obligatorio para las organizaciones contar con una aplicación sistemática de medidas de seguridad que garanticen la integridad, seguridad, autodeterminación y protejan los datos de las personas migrantes. 
+    Cada año más de medio millon de migrantes cruzan por México \parencite{oim-mexico-2023}, los cuales dependen de organizaciones, para continuar su trayecto. Durante el registro, procesos internos y salida de los migrantes de dichas organizaciones, se toman tanto datos generales, como sus datos personales, los cuales incluyen información sensible para los inmigrantes. Es por esto que se vuelven relevantes las recomendaciones de la ONU respecto a la protección de los datos. 
+
+    Casa Monarca, un refugio ubicado en el municipio de Santa Catarina, Nuevo León, es una de las muchas organizaciones que enfrentan esta problemática. Sin un sistema de firma electrónica eficiente, los procesos pueden volverse burocráticos y susceptibles a pérdidas o manipulaciones indebidas, lo que representa un riesgo para la protección de los datos de los beneficiarios. Uno de los riesgos presentes es la suplantación de identidad, en 2024 segun KPMG un 45 porciento de organizaciones enfrento un intento de fraude, donde 44 porciento de ellos estan relacionados en el robo de identidad \parencite{orozco-2024}. 
+    Estos delitos no solo afectan a las organizaciones financieramente, sino que dañan su reputación. Lo que puede poner en riesgo la credibilidad de organizaciones que recaen en apoyos economicos internacionales como de donaciones locales. 
+
+    A través de esta iniciativa, se busca demostrar el enfoque humano de la ciberseguridad, beneficiando a un grupo en condición de vulnerabilidad y promoviendo el uso responsable y seguro de la tecnología en favor de la protección de datos.
+        
+    \subsubsection{Estado del Arte}
+    
+    
+   \textbf{ 4.2.1.1. Sistemas de Firma Digital en Contextos Migratorios }
+    
+    El tema de la migración se ha vuelto un área importante para la digitalización de procesos, lo que permite mejorar la gestión de documentación y la seguridad de la información. El uso de tecnologías digitales en los procesos migratorios ha sido analizado por diferentes organizaciones internacionales.
+    La Red en Defensa de los Derechos Digitales (R3D) resalta que la digitalización en estos contextos ofrece oportunidades, pero también plantea desafíos de seguridad y privacidad para los migrantes y sus defensores \parencite{sanchez}. Así mismo, Access Now enfatiza la necesidad de implementar medidas de protección de datos para resguardar la información de los migrantes en América Latina \parencite{accessnow}.
+    El Gobierno de Perú ha avanzado en la digitalización de sus servicios consulares para mejorar la atención a sus ciudadanos en el extranjero. Una de las iniciativas destacadas es la implementación del Documento Nacional de Identidad Electrónico (DNIe) en el exterior. Este documento incorpora altos estándares de seguridad y permite a los peruanos residentes fuera del país acceder a servicios consulares de manera eficiente. Los planes piloto se han llevado a acabo en ciudades como Buenos Aires, Miami y Roma. Además, se ha proporcionado firma digital a todos los cónsules para facilitar la realización de servicios y actividades digitales, como la apostilla electrónica y el envío de actas electorales \parencite{peru}.
+    Paraguay ha adoptado medidas importantes para modernizar su gestión migratoria. En 2015, implementó el Sistema Interconectado de Registro e Identificación de Personas y el Sistema de Información y Análisis de Datos sobre la Migración (PIRS/MIDAS), diseñados para la Organización Internacional para las Migraciones (OIM). Este sistema biométrico de control migratorio y fronterizo ha sido implementado en varios puestos de control del país desde 2016, mejorando la capacidad de registro y control de movimientos migratorios \parencite{santi}.
+    
+    
+    \textbf{ 4.2.1.2. Tecnologías Utilizadas en Firmas Digitales }
+    
+    De acuerdo con Kurosawa, la criptografía de curva elíptica (ECC) es una técnica criptográfica que utiliza las propiedades de las curvas elípticas para crear sistemas de cifrado más eficientes y seguros \parencite{kurosawa}. Una implementación notable de ECC es EdDSA (Edwards-curve Digital Signature Algorithm), que ofrece firmas digitales de alta seguridad y rendimiento.
+    Ed25519 es una variante popular de EdDSA que utiliza la curva Curve25519 y el hash SHA-512, proporcionando una resistencia comparable a cifrados simétricos de 128 bits. Además, EdDSA está diseñado para ser resistente a ataques de canal lateral, ya que no utiliza operaciones que dependan de datos secretos, lo que mejora su seguridad en implementaciones prácticas.
+    Herramientas Utilizadas en la Práctica (NaCl/libsodium, OpenSSL):
+        •	NaCl/libsodium: El usuario jedisct1 muestra un repositorio de GitHub sobre NaCl (Networking and Cryptography Library), el cual es una biblioteca de criptografía diseñada para facilitar la implementación de operaciones criptográficas seguras. Libsodium es bifurcación de NaCl que mejora su protabilidad y usabilidad, proporcionando una amplia gama de funciones criptográficas, incluyendo soporte para ECC y Ed25519 \parencite{jedisct1}.
+        •	OpenSSL: Es una biblioteca de software robusta y de uso general que implementa los protocolos SSL y TLS, así como una variedad de funciones criptográficas. OpenSSL ha incorporado soporte para algoritmos de curva elíptica, incluyendo Ed25519, a partir de su versión 1.1.1, permitiendo a los desarrolladores implementar firmas digitales seguras en sus aplicaciones \parencite{openssl}.
+    
+        
+    \textbf{ 4.2.1.3. Seguridad en Sistemas de Firma Digital y Ataques de Canal Lateral }
+    
+    Uno de los mayores riesgos en la implementación de sistemas de firma digital son los ataques de canal lateral (SCA). Estos ataques aprovechan información secundaria, como el consumo de energía o el tiempo de ejecución de un algoritmo, para extraer claves privadas o información sensible.
+    De acuerdo con González M. et al (2024) Instituto de Tecnologías Físicas y de la Información (ITEFI) del CSIC ha estudiado cómo los ataques de canal lateral afectan la seguridad del algoritmo AES, proporcionando contramedidas efectivas \parencite{gonzalez}. Así también, un estudio de la Universidad Politécnica de Madrid hecho por Buurstra Parmo G. (2023) examina la vulnerabilidad de las curvas elípticas frente ataques de tiempo y plantea soluciones para mitigar estos riesgos \parencite{buurstra}.
+    Otra investigación hecha por Legón M. et al (2016), analiza los ataques de canal lateral en implementaciones criptográficas y resalta diferentes contramedidas, como el enmascaramiento de datos y la introducción de ruido aleatorio en cálculos \parencite{legon}.
+    
+    
+    \textbf{ 4.2.1.5. Estudios de Caso en la Implementación de la Firma Digital }
+    
+    
+    \textit{ Implementación de la Firma Electrónica en el sector bancario de Venezuela. }
+    
+    En Venezuela, la banca electrónica ha integrado la firma digital como una herramienta esencial para garantizar la autenticidad, confidencialidad e integridad de las transacciones electrónicas. A través de sistemas de certificación electrónica los bancos han permitido a los usuarios realizar operaciones seguras, fortaleciendo la confianza en el ciberespacio \parencite{rincon}.
+    La adopción de la firma digital en la banca ha traído consigo importantes beneficios. En primer lugar, la autenticidad de las transacciones está garantizada, lo que reduce considerablemente el riesgo de fraudes financieros. Así también, la confidencialidad de la información se ve reforzada mediante el uso de sistemas de encriptación que protegen los datos sensibles de los clientes. Además, la integridad de la información es asegurada, evitando modificaciones o alteraciones durante la transmisión de datos.
+    A pesar de estos avances, la implementación de la firma digital en el sector bancario venezolano enfrenta grandes desafíos. La necesidad de mantener una infraestructura tecnológica robusta y en constante actualización es uno de los principales retos. Igualmente, se refiere una capacitación continua tanto para el personal bancario como para los usuarios, con el fin de garantizar el uso adecuado y seguro de estas herramientas digitales.
+
+    
+    \textit{ Gobierno Electrónico en México: Implementación de la Firma Electrónica. }
+    
+    México ha avanzado en la digitalización de su administración pública, incorporando la firma electrónica en diversos servicios gubernamentales. Este mecanismo ha permitido mejorar la eficiencia y la transparencia en la gestión pública, facilitando a los ciudadanos la realización de trámites en línea y reduciendo los tiempos y costos al uso de documentos físicos \parencite{gilgarcia}.
+    Entre los principales beneficios de la firma digital en el gobierno electrónico destacan la agilización de los procesos administrativos, la reducción de la burocracia y una mayor transparencia en las operaciones gubernamentales. Además, la accesibilidad a los servicios públicos se ha incrementado considerablemente, ya que los ciudadanos pueden realizar sus trámites desde cualquier lugar y en cualquier momento.
+    Sin embargo, aún existen desafíos que limitan su adopción. La brecha digital sigue siendo una barrera importante, ya que no todas las regiones del país cuentan con el acceso a tecnología necesario para utilizar estos servicios. Además, la infraestructura tecnológica debe seguir mejorándose para garantizar la disponibilidad y seguridad de los sistemas de firma digital en la administración pública.
+
+
+
+    
+        
+            
+       
+
+% -------------------------------------- Metodologia --------------------------------------
+%Present the relative results, along indepth discussion to connect findings with enviromental imapacst and local governance
+    \section{Metodologia}
+        El plan de trabajo a seguir fue...
+        
+        
+
+
+    
+% -----------------------------Resultados---------------------------------
+    \section{Resultados}
+    %Limitations, conclusion and future work
+    La solucion desarrollada permitio.
+
+% -----------------------------Conclusiones---------------------------------
+    \section{Conclusiones}
+    %Limitations, conclusion and future work
+    Debido a esto podemos concluir...
+    
+    
+% -----------------------------Recomendaciones---------------------------------
+    \section{Recomendaciones}
+    %Limitations, conclusion and future work
+    Nosotros recomendamos...
+
+
+% -------------------------------------- REFERENCES --------------------------------------
+    %\vspace{1cm}
+    %\newpage
+    \section{References}
+    \printbibliography
+
+\end{document}
